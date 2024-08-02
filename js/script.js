@@ -1,18 +1,13 @@
-//part1
-
 'use strict';
 
-let admin, name
+let admin
+let name
 name = 'John'
 admin = name
 alert(admin)
 
-//part2
-
 let theEarth
 let username
-
-//part3
 
 let sum = '10' + 10
 const sumType = typeof sum
