@@ -13,12 +13,12 @@ console.log(typeof name);
 console.log(typeof age);
 console.log(typeof likesProgramming);
 
-let greeting = `Hi, ${name}`
+const greeting = `Hi, ${name}`
 alert(greeting)
 
-let numericAge = Number(age);
-let nextAge = numericAge + 1
+const numericAge = Number(age);
+const nextAge = numericAge + 1
 console.log(nextAge)
 
-let isAdult = numericAge >= 18
+const isAdult = numericAge >= 18
 console.log(isAdult)
