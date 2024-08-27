@@ -1,6 +1,5 @@
 'use strict';
 
-
 const result = padString('aaa', 5, 'e', true)
 console.log(result)
 
