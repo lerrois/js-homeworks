@@ -6,6 +6,9 @@ const key = generateKey(16, characters);
 console.log(key); // eg599gb60q926j8i
 
 function generateKey(strlen, characters) {
+    if (!Number.isInteger(strlen) && !(typeof characters === 'string')) {
+        return 'Provided values are not correct.'
+    }
     let generated = '';
     for (let i = 0; i < strlen; i++) {
         generated += characters[Math.floor(Math.random() * strlen)];
