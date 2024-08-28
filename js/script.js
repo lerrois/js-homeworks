@@ -1,3 +1,5 @@
+'use strict';
+
 let str = '';
 const max = 20;
 for (let i = 10; i <= max; i += 1) {
