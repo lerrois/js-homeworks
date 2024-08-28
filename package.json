@@ -1,0 +1,31 @@
+{
+  "name": "js-homeworks",
+  "version": "1.0.0",
+  "description": "js_homeworks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lerrois/js-homeworks.git"
+  },
+  "author": "Valeriia-Shutalova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lerrois/js-homeworks/issues"
+  },
+  "homepage": "https://github.com/lerrois/js-homeworks#readme",
+  "dependencies": {
+    "install-peerdeps": "^3.0.3",
+    "lodash": "^4.17.21",
+    "prettier": "^3.3.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.9.0"
+  }
+}
