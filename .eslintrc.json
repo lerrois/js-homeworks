@@ -10,5 +10,8 @@
         "ecmaVersion": 15
     },
     "rules": {
+        "strict" : "off",
+        "no-alert": "off",
+        "no-console": "off"
     }
 }
