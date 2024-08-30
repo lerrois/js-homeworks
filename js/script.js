@@ -1,11 +1,10 @@
 'use strict';
 
-function removeElement (array, item) {
-    const array = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
+const array = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
 
-    const result = array.filter((word) => word.length !=item);
+const removeElement = function (arr, item) {
+  const result = arr.filter((word) => word !== item);
+  return result;
+};
 
-    console.log(result);}
-
-// Expected output: Array ["exuberant", "destruction", "present"]
-
+console.log(removeElement(array, 'elite'));
