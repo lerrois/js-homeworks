@@ -3,8 +3,7 @@
 const array = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
 
 const removeElement = function (arr, item) {
-  const result = arr.filter((word) => word !== item);
-  return result;
+  return arr.filter((word) => word !== item);
 };
 
 console.log(removeElement(array, 'elite'));
