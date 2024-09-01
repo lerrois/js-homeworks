@@ -10,16 +10,12 @@ function arithmeticalMean(array) {
       iterator += 1;
     }
   }
-
   return sum / iterator;
 }
-
 const arr = ['apple', 3, 'orange', 5, 8, 'cherry'];
 
 const amean = arithmeticalMean(arr);
 console.log(`серендє арифметичне =${amean}`);
-
-console.log('-----------------------------------------');
 
 const x = Number(prompt('введіть перше число'));
 const y = Number(prompt('введіть друге число'));
@@ -51,14 +47,11 @@ if (typeof x !== 'number' || typeof y !== 'number') {
   };
   alert(doMath(x, znak, y));
 }
-console.log('-----------------------------------------');
 
 const first = prompt('введіть кількісь блоків данних');
-
 const array = [];
 let internalLength = 0;
 let internal = [];
-
 const inputData = function () {
   for (let i = 0; i < first; i++) {
     internalLength = prompt('введіть кількість айтемів у блоці');
@@ -73,18 +66,22 @@ const inputData = function () {
 alert(inputData().join('\n'));
 console.log(array);
 
-console.log('-----------------------------------------');
-
-const func = function (string, arr) {
+const inputString = prompt('Введіть строку');
+let inputArr = prompt('введіть масив');
+inputArr = [...inputArr];
+const func = function (string, arr1) {
   let str = '';
+  let skip = false;
   for (let i = 0; i < string.length; i++) {
-    console.log(string[i]);
-    for (let j = 0; j < arr.length; j++) {
-      if (string[i] === arr[j]) {
-
+    for (let j = 0; j < arr1.length; j++) {
+      if (string[i] === arr1[j]) {
+        skip = true;
       }
     }
-
+    if (skip === false) {
+      str += string[i];
+    }
   }
-}
-
+  return str;
+};
+alert(func(inputString, inputArr));
