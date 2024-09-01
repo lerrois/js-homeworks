@@ -74,3 +74,17 @@ alert(inputData().join('\n'));
 console.log(array);
 
 console.log('-----------------------------------------');
+
+const func = function (string, arr) {
+  let str = '';
+  for (let i = 0; i < string.length; i++) {
+    console.log(string[i]);
+    for (let j = 0; j < arr.length; j++) {
+      if (string[i] === arr[j]) {
+
+      }
+    }
+
+  }
+}
+
