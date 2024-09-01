@@ -16,8 +16,8 @@ const mainFunction = function (callback) {
   const expon = Number(prompt('input exponentiaton'));
   if (typeof numer !== 'number' || expon !== 'number') {
     alert('error');
-  } else {
-    return callback(numer, expon);
+    return null;
   }
+  return callback(numer, expon);
 };
 mainFunction(exponentiation);
