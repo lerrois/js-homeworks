@@ -57,4 +57,37 @@ positivArray.forEach((num) => {
 console.log(multi);
 console.log('--------------------------------------------------------------');
 
-// Знайти найбільший серед елементів масиву, остальні обнулити.
+let max1 = elements[0];
+
+elements.forEach((item) => {
+  if (item > max1) {
+    max1 = item;
+  }
+});
+elements.forEach((item, index, arra) => {
+  if (item !== max1) {
+    arra[index] = null;
+  }
+});
+console.log(elements);
+console.log(max1);
+
+console.log('_________________________________alternative solutions: _____________________________');
+
+let dobutok = 1;
+const arr1 = [1, 3, -5, 7, -9, 3, -1];
+arr1.forEach((item) => {
+  if (item > 0) {
+    dobutok *= item;
+  }
+});
+console.log(dobutok);
+
+let snp = 0;
+const arr2 = [1, 3, -5, 7, -9, 3, -1];
+arr2.forEach((item) => {
+  if (item % 2 !== 0 && item > 0) {
+    snp += item;
+  }
+});
+console.log(snp);
