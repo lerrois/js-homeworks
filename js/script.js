@@ -43,7 +43,6 @@ console.log(sum2);
 console.log('--------------------------------------------------------------');
 
 let sum3 = 0;
-
 positivNeparArray.forEach((num) => {
   sum3 += num;
 });
