@@ -58,7 +58,6 @@ const users = [
 ];
 
 const newUsers = users.filter((user) => Number(user.balance.slice(1).split(',').join('')) > 2000);
-
 const usersPhones = newUsers.map(
   (user) => user.phone,
 );
