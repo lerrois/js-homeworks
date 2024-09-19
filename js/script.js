@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 this.x = 9;
 const module = {
   x: 81,
