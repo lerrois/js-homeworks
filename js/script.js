@@ -1,19 +1,28 @@
 'use strict';
 
-const myBind = (func, context, ...args) => {
-  this = context;
-  const allArgs = [...args];
-  return func(...allArgs);
+const user = {
+  firstName: 'Olga',
+  lastName: 'Shwartz',
 };
 
-// Приклад
-const greet = function (greeting) {
-  console.log(greeting);
-  return `${greeting}, ${this.name}`;
+const getFullName = () => {
+  return `${this.firstName} ${this.lastName}`;
+};
+const applyFunc = (func, context, ...args) => {
+  let result = null;
+  context.func = func;
+  result = context.func(...args);
+  delete context.func;
+
+  return result;
 };
 
-const person = { name: 'Olga' };
-
-const boundGreet = myBind(greet, person, 'Hello');
-
-console.log(boundGreet('!')); // "Hello, Olga!"
+const myBind = (func = null, context = undefined, args = []) => {
+  if (!func) return undefined;
+  return function () {
+    return applyFunc(func, context, ...args);
+  };
+};
+const bindFunc = myBind(getFullName, user);
+console.log(bindFunc);
+console.log(bindFunc());
