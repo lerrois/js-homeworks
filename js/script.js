@@ -1,12 +1,16 @@
 'use strict';
 
 const myBind = (func, context, ...args) => (...newArgs) => {
+  // Создаем массив аргументов, объединяя старые и новые
   const allArgs = [...args, ...newArgs];
-  return func(...allArgs.map((arg) => (typeof arg === 'function' ? arg.bind(context)() : arg)));
+  // Вызываем функцию с указанным контекстом
+  return func(...allArgs);
 };
 
 // Пример использования
-const greet = (greeting, punctuation) => `${greeting}, ${this.name}${punctuation}`;
+const greet = function(greeting, punctuation) {
+  return `${greeting}, ${this.name}${punctuation}`;
+};
 
 const person = { name: 'Olga' };
 
