@@ -1,25 +1,15 @@
 'use strict';
 
-this.x = 9;
-const module = {
-  x: 81,
-  self: this,
-  getX() {
-    return this.self.x;
-  },
+const myBind = (func, context, ...args) => (...newArgs) => {
+  const allArgs = [...args, ...newArgs];
+  return func(...allArgs.map((arg) => (typeof arg === 'function' ? arg.bind(context)() : arg)));
 };
 
-module.getX(); // 81
+// Пример использования
+const greet = (greeting, punctuation) => `${greeting}, ${this.name}${punctuation}`;
 
-const { getX } = module;
-getX(); // 9, поскольку в этом случае this ссылается на глобальный объект
+const person = { name: 'Olga' };
 
-// создаём новую функцию с this, привязанным к module
-const boundGetX = getX();
-boundGetX(); // 81
+const boundGreet = myBind(greet, person, 'Hello');
 
-
-const modulefunc = (context, callback) => {
-    this = context
-  const newfunc = () => {}
-}
+console.log(boundGreet('!')); // "Hello, Olga!"
