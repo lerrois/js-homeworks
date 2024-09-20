@@ -1,12 +1,14 @@
 'use strict';
 
-const myBind = (func, context, ...args) => (...newArgs) => {
-  const allArgs = [...args, ...newArgs];
+const myBind = (func, context, ...args) => {
+  this = context;
+  const allArgs = [...args];
   return func(...allArgs);
 };
 
-// Пример
+// Приклад
 const greet = function (greeting) {
+  console.log(greeting);
   return `${greeting}, ${this.name}`;
 };
 
