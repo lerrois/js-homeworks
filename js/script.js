@@ -3,12 +3,12 @@
 const func = () => {
   let previousInput = 0;
   let summa = 0;
-  const sum = (a) => {
+  const sumFunc = (a) => {
     summa = previousInput + a;
     previousInput = a;
     return summa;
   };
-  return sum;
+  return sumFunc;
 };
 
 const sum = func();
