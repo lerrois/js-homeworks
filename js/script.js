@@ -4,24 +4,24 @@
 const insertWordInto = (str) => {
   let pos = 0;
   let isStart = false;
-  let noResults = false;
+  let hasResults = false;
   const newInsert = (string) => {
-    if (string === null || str.length < 1) {
+    if (str.length < 1) {
       return alert('Error!');
     }
-    if (!noResults) {
+    if (!hasResults) {
       pos = str.indexOf(' ', pos + 1);
     }
     if (pos === -1) {
-      noResults = true;
+      hasResults = true;
     } else {
       string = ` ${string}`;
     }
-    if (noResults && isStart === false) {
+    if (hasResults && isStart === false) {
       pos = 0;
       isStart = true;
       string = `${string} `;
-    } else if (noResults && isStart === true) {
+    } else if (hasResults && isStart === true) {
       pos = str.length;
     }
 
