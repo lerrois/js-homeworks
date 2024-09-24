@@ -6,7 +6,7 @@ const insertWordInto = (str) => {
   let isStart = false;
   let hasResults = false;
   const newInsert = (string) => {
-    if (str.length < 1) {
+    if (typeof string === string || str.length < 1) {
       return alert('Error!');
     }
     if (!hasResults) {
