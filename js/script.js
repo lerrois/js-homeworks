@@ -19,6 +19,7 @@ const generateImg = (imgName) => {
   img.src = `${IMG_FOLDER}/${imgName + IMG_EXT}`;
   img.alt = `${IMG_FOLDER}/${imgName + IMG_EXT}`;
   img.title = `${IMG_FOLDER}/${imgName + IMG_EXT}`;
+  return img;
 };
 
 const imgToAppend = generateImg(getRandomNumber());
