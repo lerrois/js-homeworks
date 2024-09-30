@@ -4,8 +4,12 @@ const div = document.createElement('div');
 div.innerHTML = 'Hello World!';
 
 const divAppers = () => {
-  document.getElementsByTagName('span').append(div);
+  document.body.append(div);
 };
 
-document.addEventListener('mouseover', divAppers());
-document.addEventListener('mouseout', divAppers());
+const divDisappears = () => {
+  document.body.delete(div);
+};
+
+document.addEventListener('mouseover', divAppers);
+document.addEventListener('mouseout', divDisappears);
