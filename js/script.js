@@ -8,7 +8,7 @@ const divAppers = () => {
 };
 
 const divDisappears = () => {
-  document.body.delete(div);
+  div.remove();
 };
 
 document.addEventListener('mouseover', divAppers);
