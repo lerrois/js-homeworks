@@ -5,17 +5,18 @@ const appendHTMLElement = (parentElement = null, elementToAppend = null) => {
   parentElement.append(elementToAppend);
 };
 
-const generateTable = () => {
-  const tableSize = 10;
+const generateTable = (a, b) => {
   const table = document.createElement('table');
   table.className = 'table';
   const tbody = document.createElement('tbody');
   table.append(tbody);
-  for (let i = 0; i <= tableSize; i++) {
+  let k = 1;
+  for (let i = 1; i <= a; i++) {
     const tr = document.createElement('tr');
-    for (let j = 0; j <= tableSize; j++) {
+    for (let j = 1; j <= b; j++) {
       const td = document.createElement('td');
-      td.innerHTML = `${j}`;
+      td.innerHTML = `${k}`;
+      k++;
       tr.append(td);
     }
     tbody.append(tr);
@@ -23,4 +24,4 @@ const generateTable = () => {
   return table;
 };
 
-appendHTMLElement(document.body, generateTable());
+appendHTMLElement(document.body, generateTable(7,8));
