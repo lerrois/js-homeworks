@@ -10,18 +10,16 @@ const user = {
   set theName(value) {
     this.name = value;
   },
-//Сетер для age має перевіряти, щоб вік був числом від 0 до 120.
-// Якщо значення не підходить, виведіть помилку в консоль і не змінюйте значення.
-
   get theAge() {
     return `${this.age}`;
   },
   set theAge(value) {
-      if
-    this.age = value;
+    if (value !== '' && Number(value) < 120 && Number(value) >= 0) {
+      this.age = value;
+    } else throw new Error('age must be a number from 0 to 120');
   },
 };
 
 user.theName = 'Matilda';
-
-user.theAge = '26';
+user.theAge = '20';
+console.log(user);
