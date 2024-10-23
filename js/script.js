@@ -13,8 +13,19 @@ let user = {
         a2: 3,
         b2: 3,
         c2: 3,
-      }
+      },
     },
-  }
+  },
 };
 
+const DeepFreeze = (obj) => {
+  for (let key in obj) {
+    if (typeof (obj[key]) === 'object') {
+      DeepFreeze(obj[key]);
+      Object.freeze(obj[key]);
+    }
+  }
+  Object.freeze(obj);
+};
+
+DeepFreeze(user);
