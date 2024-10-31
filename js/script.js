@@ -80,4 +80,14 @@ student1.mark(10);
 student1.present();
 student1.present();
 student1.absent();
+
+student2.mark(9);
+student2.mark(10);
+student2.mark(10);
+student2.present();
+student2.present();
+student2.present();
 console.log(student1.summary());
+console.log(student2.summary());
+
+
