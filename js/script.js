@@ -72,18 +72,18 @@ const student2 = new Student('Alison', 'Moore', 1998);
 const student3 = new Student('Erick', 'Peterson', 2002);
 
 student1.present();
-student1.present();
-student1.present();
-student1.absent();
 student1.mark(3);
+student1.present();
 student1.mark(5);
+student1.present();
 student1.mark(10);
+student1.absent();
 
 student2.present();
-student2.present();
-student2.present();
 student2.mark(9);
+student2.present();
 student2.mark(10);
+student2.present();
 student2.mark(10);
 
 student3.present();
