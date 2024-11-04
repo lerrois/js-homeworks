@@ -4,63 +4,60 @@ function Student(name, lastName, year) {
   this.name = name;
   this.lastName = lastName;
   this.year = year;
+  this.currentLesson = 0;
   this.presen = Array(10);
   this.marks = Array(10);
 }
 
 Student.prototype.present = function () {
-  const index = this.presen.findIndex((element) => (typeof element === 'undefined'));
-  if (index !== -1) {
-    this.presen[index] = true;
-  }
+  if (this.currentLesson > 10) throw new Error('only 10 lessons');
+  this.presen[this.currentLesson] = true;
+  this.currentLesson += 1;
 };
+
 Student.prototype.absent = function () {
-  const index = this.presen.findIndex((element) => (typeof element === 'undefined'));
-  if (index !== -1) {
-    this.presen[index] = false;
-  }
+  if (this.currentLesson > 10) throw new Error('only 10 lessons');
+  this.presen[this.currentLesson] = false;
+  this.currentLesson += 1;
 };
 
 Student.prototype.mark = function (value) {
-  const index = this.marks.findIndex((element) => (typeof element === 'undefined'));
-  if (typeof value === 'number' && index !== -1) {
-    this.marks[index] = value;
-  }
+  if (!this.presen[this.currentLesson - 1]) throw new Error('mark cannot be set for this lesson');
+  this.marks[this.currentLesson - 1] = value;
 };
 
-Student.prototype.midmark = function () {
-  const index = this.marks.findIndex((element) => (typeof element === 'undefined'));
-  const initialValue = 0;
-  const sumWithInitial = this.marks.reduce(
-    function(accumulator, currentValue) {
-      if (typeof currentValue !== 'undefined') {
-        return accumulator + currentValue;
-      }
+Student.prototype._calcAvgMark = function () {
+  const marksData = this.marks.reduce(
+    (acc, item) => {
+      if (typeof item === 'undefined') return acc;
+      acc.marksCount += 1;
+      acc.marksSum += item;
+      return acc;
     },
-    initialValue,
+    {
+      marksCount: 0,
+      marksSum: 0,
+    },
   );
-  return index !== 0 ? sumWithInitial / index : 0;
+  return marksData.marksSum / marksData.marksCount;
+};
+
+Student.prototype._calcAvgAttd = function () {
+  if (typeof this.presen[0] !== 'boolean') {
+    return ('cannot calc because no lesson was created');
+  }
+  const visitedLessonsCount = this.presen.filter(Boolean).length;
+  return visitedLessonsCount / this.currentLesson;
 };
 
 Student.prototype.summary = function () {
-  const midMarkValue = this.midmark();
+  const avgMark = Number(this._calcAvgMark().toFixed(1));
+  const avgAttd = Number(this._calcAvgAttd().toFixed(1));
 
-  const index = this.presen.findIndex((element) => (typeof element === 'undefined'));
-  const initialValue = 0;
-  const sumWithInitial = this.presen.reduce(
-    function(accumulator, currentValue) {
-      if (currentValue === true) {
-        return accumulator + 1;
-      }
-    },
-    initialValue,
-  );
-  const midpresent = index !== 0 ? index / sumWithInitial : 0;
-
-  if (midpresent >= 0.9 && midMarkValue >= 9) {
+  if (avgAttd >= 0.9 && avgMark >= 9) {
     return 'Ух ти, який молодчинка!';
   }
-  if (midpresent < 0.9 && midMarkValue < 9) {
+  if (avgAttd < 0.9 && avgMark < 9) {
     return 'Редька!';
   }
   return 'Нормально, але можна краще';
@@ -74,20 +71,24 @@ const student1 = new Student('Nick', 'Cave', 1982);
 const student2 = new Student('Alison', 'Moore', 1998);
 const student3 = new Student('Erick', 'Peterson', 2002);
 
-student1.mark(3);
-student1.mark(5);
-student1.mark(10);
+student1.present();
 student1.present();
 student1.present();
 student1.absent();
+student1.mark(3);
+student1.mark(5);
+student1.mark(10);
 
+student2.present();
+student2.present();
+student2.present();
 student2.mark(9);
 student2.mark(10);
 student2.mark(10);
-student2.present();
-student2.present();
-student2.present();
+
+student3.present();
+student3.mark(9);
+
 console.log(student1.summary());
 console.log(student2.summary());
-
-
+console.log(student3.summary());
